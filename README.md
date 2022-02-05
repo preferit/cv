@@ -10,6 +10,7 @@
         -co, --co-file : ""
         -ms, --max-skills : 1000
         -mp, --max-projects : 1000
+        -fp, --full-projects : 3
         -t, --template : "one-page" [one-page full]
         -s, --save-as : "cv.html"
         -h, --help

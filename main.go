@@ -12,13 +12,14 @@ import (
 
 func main() {
 	var (
-		cli         = cmdline.NewBasicParser()
-		filename    = cli.Option("-cv, --cv-input").String("")
-		companyFile = cli.Option("-co, --co-file").String("")
-		maxSkills   = cli.Option("-ms, --max-skills").Uint(1000)
-		maxProjects = cli.Option("-mp, --max-projects").Uint(1000)
-		template    = cli.Option("-t, --template").Enum("one-page", "one-page", "full")
-		saveas      = cli.Option("-s, --save-as").String("cv.html")
+		cli          = cmdline.NewBasicParser()
+		filename     = cli.Option("-cv, --cv-input").String("")
+		companyFile  = cli.Option("-co, --co-file").String("")
+		maxSkills    = cli.Option("-ms, --max-skills").Uint(1000)
+		maxProjects  = cli.Option("-mp, --max-projects").Uint(1000)
+		fullProjects = cli.Option("-fp, --full-projects").Uint(3)
+		template     = cli.Option("-t, --template").Enum("one-page", "one-page", "full")
+		saveas       = cli.Option("-s, --save-as").String("cv.html")
 	)
 	cli.Parse()
 
@@ -44,7 +45,7 @@ func main() {
 		}
 
 		// trim projects to fit more on first page
-		if max := 3; len(in.Projects) > max {
+		if max := int(fullProjects); len(in.Projects) > max {
 			for i := max; i < len(in.Projects); i++ {
 				in.Projects[i].oneLiner = true
 			}
