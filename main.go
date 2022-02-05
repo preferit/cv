@@ -16,11 +16,13 @@ func main() {
 		maxSkills   uint = 1000
 		maxProjects uint = 1000
 		template         = "one-page"
+		saveas           = "cv.html"
 	)
 	flag.StringVar(&filename, "cv", "", "CV in yaml format")
 	flag.UintVar(&maxSkills, "max-skills", maxSkills, "Number of skills to show")
 	flag.UintVar(&maxProjects, "max-projects", maxProjects, "Number of projects to show")
 	flag.StringVar(&template, "template", template, "Output template, one-page or full")
+	flag.StringVar(&saveas, "save-as", saveas, "Html file to save")
 	flag.Parse()
 
 	// load curriculum vitae
@@ -78,5 +80,10 @@ func main() {
 	}
 
 	page = NewOnePage(&co, &in)
-	page.WriteTo(os.Stdout)
+	switch saveas {
+	case "":
+		page.WriteTo(os.Stdout)
+	default:
+		page.SaveAs(saveas)
+	}
 }

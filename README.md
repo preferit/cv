@@ -10,6 +10,8 @@
         	Number of projects to show (default 1000)
       -max-skills uint
         	Number of skills to show (default 1000)
+      -save-as string
+        	Html file to save (default "cv.html")
       -template string
         	Output template, one-page or full (default "one-page")
     
