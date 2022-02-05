@@ -1,0 +1,50 @@
+person:
+  name: John Doe
+  image: https://example.com/image.png
+
+  description: John is...
+
+technicalskills:
+  - item: Java
+    e: 3
+  - item: Javascript
+    e: 3.5
+  - item: Perl
+    e: 5
+  - item: Python
+    e: 2
+
+      
+languages:
+  - item: Swedish
+  - item: English
+
+educations:
+  - subject: Bioinformatics
+    grade: Master
+    period:
+      fromyear: 2003
+      toyear: 2004
+    location: Lund University
+
+  - subject: Computer Science
+    grade: Bachelor
+    period:
+      fromyear: 1996
+      toyear: 1999
+    location: Växjö University
+
+projects:
+  - title: Hospitality Vostio
+    customer: AssaAbloy
+    period:
+      fromyear: 2020
+      toyear: 2022
+    tags:
+      - Go
+      - AWS
+      - Lambda
+    roles:
+      - role: Developer
+    short: One sentence description
+    more: more information here...
