@@ -1,4 +1,4 @@
-module github.com/gregoryv/cv
+module github.com/preferit/cv
 
 go 1.17
 
