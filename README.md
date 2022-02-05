@@ -38,25 +38,18 @@
       - item: English
     
     educations:
-      - subject: Bioinformatics
+      - subject: Computer Science
         grade: Master
         period:
-          fromyear: 2003
-          toyear: 2004
+          fromyear: 2000
+          toyear: 2003
         location: Lund University
     
-      - subject: Computer Science
-        grade: Bachelor
-        period:
-          fromyear: 1996
-          toyear: 1999
-        location: Växjö University
-    
     projects:
-      - title: Hospitality Vostio
-        customer: AssaAbloy
+      - title: Space project
+        customer: NASA
         period:
-          fromyear: 2020
+          fromyear: 2004
           toyear: 2022
         tags:
           - Go
