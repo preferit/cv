@@ -3,7 +3,7 @@ cv - command for generating HTML from YAML
 
     $ cv -h
     
-    Usage of /tmp/go-build4027457904/b001/exe/cv:
+    Usage of cv:
       -cv string
         	CV in yaml format
       -max-projects uint
