@@ -3,17 +3,16 @@
 
     $ cv -h
     
-    Usage of cv:
-      -cv string
-        	CV in yaml format
-      -max-projects uint
-        	Number of projects to show (default 1000)
-      -max-skills uint
-        	Number of skills to show (default 1000)
-      -save-as string
-        	Html file to save (default "cv.html")
-      -template string
-        	Output template, one-page or full (default "one-page")
+    Usage: cv [OPTIONS]
+    
+    Options
+        -cv, --cv-input : ""
+        -ms, --max-skills : 1000
+        -mp, --max-projects : 1000
+        -t, --template : "one-page" [one-page full]
+        -s, --save-as : "cv.html"
+        -h, --help
+    
     
 
 ## Template file format

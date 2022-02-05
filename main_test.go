@@ -16,8 +16,8 @@ func Test_generate_readme(t *testing.T) {
 	}
 	// replace temporary build name
 	from := bytes.Index(out, []byte("/tmp/"))
-	to := bytes.Index(out, []byte("cv:"))
-	res := append(out[:from], out[to:]...)
+	to := bytes.Index(out, []byte("/cv"))
+	res := append(out[:from], out[to+1:]...)
 
 	data, err := os.ReadFile("example.yaml")
 

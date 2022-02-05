@@ -3,6 +3,7 @@ module github.com/preferit/cv
 go 1.17
 
 require (
+	github.com/gregoryv/cmdline v0.11.0
 	github.com/gregoryv/web v0.23.0
 	gopkg.in/yaml.v2 v2.4.0
 )
@@ -10,5 +11,5 @@ require (
 require (
 	github.com/gregoryv/find v0.4.0 // indirect
 	github.com/gregoryv/nexus v0.5.1 // indirect
-	golang.org/x/net v0.0.0-20211029224645-99673261e6eb // indirect
+	golang.org/x/net v0.0.0-20211216030914-fe4d6282115f // indirect
 )

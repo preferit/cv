@@ -1,29 +1,25 @@
 package main
 
 import (
-	"flag"
 	"log"
 	"os"
 	"sort"
 
+	"github.com/gregoryv/cmdline"
 	"github.com/gregoryv/web"
 	"gopkg.in/yaml.v2"
 )
 
 func main() {
 	var (
-		filename    string
-		maxSkills   uint = 1000
-		maxProjects uint = 1000
-		template         = "one-page"
-		saveas           = "cv.html"
+		cli         = cmdline.NewBasicParser()
+		filename    = cli.Option("-cv, --cv-input").String("")
+		maxSkills   = cli.Option("-ms, --max-skills").Uint(1000)
+		maxProjects = cli.Option("-mp, --max-projects").Uint(1000)
+		template    = cli.Option("-t, --template").Enum("one-page", "one-page", "full")
+		saveas      = cli.Option("-s, --save-as").String("cv.html")
 	)
-	flag.StringVar(&filename, "cv", "", "CV in yaml format")
-	flag.UintVar(&maxSkills, "max-skills", maxSkills, "Number of skills to show")
-	flag.UintVar(&maxProjects, "max-projects", maxProjects, "Number of projects to show")
-	flag.StringVar(&template, "template", template, "Output template, one-page or full")
-	flag.StringVar(&saveas, "save-as", saveas, "Html file to save")
-	flag.Parse()
+	cli.Parse()
 
 	// load curriculum vitae
 	data, err := os.ReadFile(filename)
