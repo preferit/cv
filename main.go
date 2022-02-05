@@ -22,14 +22,8 @@ func main() {
 	cli.Parse()
 
 	// load curriculum vitae
-	data, err := os.ReadFile(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
 	var in CV
-	if err := yaml.Unmarshal(data, &in); err != nil {
-		log.Fatal(err)
-	}
+	loadYaml(filename, &in)
 
 	co := Company{
 		Logo:  "https://preferit.se/Smith/uploads/2018/01/preferit-logo-1.png",
@@ -81,5 +75,15 @@ func main() {
 		page.WriteTo(os.Stdout)
 	default:
 		page.SaveAs(saveas)
+	}
+}
+
+func loadYaml(filename string, into interface{}) {
+	data, err := os.ReadFile(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err := yaml.Unmarshal(data, into); err != nil {
+		log.Fatal(err)
 	}
 }
