@@ -1,6 +1,9 @@
 package main
 
 import (
+	"bytes"
+	_ "embed"
+	"fmt"
 	"log"
 	"os"
 	"sort"
@@ -20,8 +23,14 @@ func main() {
 		fullProjects = cli.Option("-fp, --full-projects").Uint(3)
 		template     = cli.Option("-t, --template").Enum("one-page", "one-page", "full")
 		saveas       = cli.Option("-s, --save-as").String("cv.html")
+		version      = cli.Flag("-v, --version")
 	)
 	cli.Parse()
+
+	if version {
+		showVersion()
+		os.Exit(0)
+	}
 
 	// load curriculum vitae
 	var in CV
@@ -88,3 +97,12 @@ func loadYaml(filename string, into interface{}) {
 		log.Fatal(err)
 	}
 }
+
+func showVersion() {
+	from := bytes.Index(changelog, []byte("## ["))
+	to := bytes.Index(changelog[from:], []byte("]"))
+	fmt.Println(string(changelog[from+4 : from+to]))
+}
+
+//go:embed changelog.md
+var changelog []byte

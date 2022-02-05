@@ -13,6 +13,7 @@
         -fp, --full-projects : 3
         -t, --template : "one-page" [one-page full]
         -s, --save-as : "cv.html"
+        -v, --version
         -h, --help
     
     
