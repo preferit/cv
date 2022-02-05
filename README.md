@@ -7,6 +7,7 @@
     
     Options
         -cv, --cv-input : ""
+        -co, --co-file : ""
         -ms, --max-skills : 1000
         -mp, --max-projects : 1000
         -t, --template : "one-page" [one-page full]

@@ -14,6 +14,7 @@ func main() {
 	var (
 		cli         = cmdline.NewBasicParser()
 		filename    = cli.Option("-cv, --cv-input").String("")
+		companyFile = cli.Option("-co, --co-file").String("")
 		maxSkills   = cli.Option("-ms, --max-skills").Uint(1000)
 		maxProjects = cli.Option("-mp, --max-projects").Uint(1000)
 		template    = cli.Option("-t, --template").Enum("one-page", "one-page", "full")
@@ -24,11 +25,8 @@ func main() {
 	// load curriculum vitae
 	var in CV
 	loadYaml(filename, &in)
-
-	co := Company{
-		Logo:  "https://preferit.se/Smith/uploads/2018/01/preferit-logo-1.png",
-		Phone: "+46 (0) 76 122 93 40",
-	}
+	var co Company
+	loadYaml(companyFile, &co)
 	// prepare model, depending on what output you want
 	sort.Sort(sort.Reverse(TechSkillByE(in.TechnicalSkills)))
 
