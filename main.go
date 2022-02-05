@@ -38,10 +38,9 @@ func main() {
 		if max := int(maxSkills); len(in.TechnicalSkills) > max {
 			in.TechnicalSkills = in.TechnicalSkills[:max]
 		}
-
+		// short descriptions for all projects
 		for i, _ := range in.Projects {
 			in.Projects[i].showShort = true
-			//in.Projects[i].showMore = true
 		}
 
 		// trim projects to fit more on first page
@@ -50,7 +49,7 @@ func main() {
 				in.Projects[i].oneLiner = true
 			}
 		}
-
+		// hide projects after maxProjects
 		for i := 0; i < len(in.Projects); i++ {
 			if i < int(maxProjects) {
 				continue
@@ -68,6 +67,7 @@ func main() {
 		log.Fatal("unknown template")
 	}
 
+	// Create and save page
 	page = NewOnePage(&co, &in)
 	switch saveas {
 	case "":
@@ -77,6 +77,8 @@ func main() {
 	}
 }
 
+// loadYaml reads the given yaml file and unmarshals into object.
+// Fatal on errors.
 func loadYaml(filename string, into interface{}) {
 	data, err := os.ReadFile(filename)
 	if err != nil {
