@@ -68,7 +68,7 @@ func main() {
 	}
 
 	// Create and save page
-	page = NewOnePage(&co, &in)
+	page = NewCVPage(&co, &in)
 	switch saveas {
 	case "":
 		page.WriteTo(os.Stdout)

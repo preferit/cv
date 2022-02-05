@@ -9,7 +9,7 @@ import (
 	"github.com/gregoryv/web/theme"
 )
 
-func NewOnePage(co *Company, in *CV) *Page {
+func NewCVPage(co *Company, in *CV) *Page {
 	content := Wrap(
 		Header(
 			Div(Class("company"),
