@@ -7,13 +7,10 @@ type Company struct {
 
 type CV struct {
 	Person
-
 	Languages
-
+	Educations      []Education
 	TechnicalSkills []TechSkill
 	Projects        []Project
-
-	Educations []Education
 }
 
 type Education struct {
