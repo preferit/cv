@@ -50,7 +50,7 @@
           toyear: 2003
         location: Lund University
     
-    projects:
+    experience:
       - title: Space project
         customer: NASA
         period:

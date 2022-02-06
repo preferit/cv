@@ -75,20 +75,20 @@ func NewCVPage(co *Company, in *CV) *Page {
 			P(in.Person.Description),
 
 			H2("Experience",
-				Span(" (", experienceYears(in.Projects), " years)"),
+				Span(" (", experienceYears(in.Experience), " years)"),
 			),
 			func() *Element {
 
 				s := Section()
 				// find start of oneliners
 				var split int
-				for i, p := range in.Projects {
+				for i, p := range in.Experience {
 					split = i
 					if p.oneLiner {
 						break
 					}
 				}
-				for _, p := range in.Projects[:split] {
+				for _, p := range in.Experience[:split] {
 					if p.hide {
 						continue
 					}
@@ -125,7 +125,7 @@ func NewCVPage(co *Company, in *CV) *Page {
 				}
 
 				rest := Section(Class("rest"))
-				for _, p := range in.Projects[split:] {
+				for _, p := range in.Experience[split:] {
 					if p.hide {
 						continue
 					}

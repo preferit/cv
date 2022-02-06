@@ -13,7 +13,7 @@ type CV struct {
 	Languages
 	Educations      []Education
 	TechnicalSkills []TechSkill
-	Projects        []Project
+	Experience      []Project
 }
 
 type Education struct {

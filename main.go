@@ -64,28 +64,28 @@ func main() {
 			in.TechnicalSkills = in.TechnicalSkills[:max]
 		}
 		// short descriptions for all projects
-		for i, _ := range in.Projects {
-			in.Projects[i].showShort = true
+		for i, _ := range in.Experience {
+			in.Experience[i].showShort = true
 		}
 
 		// trim projects to fit more on first page
-		if max := int(fullProjects); len(in.Projects) > max {
-			for i := max; i < len(in.Projects); i++ {
-				in.Projects[i].oneLiner = true
+		if max := int(fullProjects); len(in.Experience) > max {
+			for i := max; i < len(in.Experience); i++ {
+				in.Experience[i].oneLiner = true
 			}
 		}
 		// hide projects after maxProjects
-		for i := 0; i < len(in.Projects); i++ {
+		for i := 0; i < len(in.Experience); i++ {
 			if i < int(maxProjects) {
 				continue
 			}
-			in.Projects[i].hide = true
+			in.Experience[i].hide = true
 		}
 
 	case "full":
-		for i, _ := range in.Projects {
-			in.Projects[i].showShort = true
-			in.Projects[i].showMore = true
+		for i, _ := range in.Experience {
+			in.Experience[i].showShort = true
+			in.Experience[i].showMore = true
 		}
 
 	default:
