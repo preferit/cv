@@ -99,12 +99,23 @@ func NewCVPage(co *Company, in *CV) *Page {
 					if p.showMore {
 						content.With(p.More)
 					}
+					roles := Wrap()
+					if len(p.Roles) > 0 {
+						roles = Span(Class("roles"),
+							strings.Join(p.Roles, ", "), ": ",
+						)
+					}
+
+					tags := Wrap()
+					if len(p.Tags) > 0 {
+						tags = Span(Class("tags"),
+							roles, strings.Join(p.Tags, ", "),
+						)
+					}
 					s.With(
 						h,
 						content,
-						Span(Class("tags"),
-							"&mdash; ", strings.Join(p.Tags, ", "),
-						),
+						tags,
 					)
 				}
 

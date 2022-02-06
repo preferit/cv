@@ -24,9 +24,10 @@ type Project struct {
 	Title    string
 	Customer string
 	Period
+	Tags  []string
+	Roles []string
 	Short string
 	More  string
-	Tags  []string
 
 	// hidden fields are used for styling output
 	hide      bool

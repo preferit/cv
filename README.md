@@ -61,7 +61,7 @@
           - AWS
           - Lambda
         roles:
-          - role: Developer
+          - Developer
         short: One sentence description
         more: more information here...
     
