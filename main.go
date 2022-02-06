@@ -18,7 +18,7 @@ func main() {
 	var (
 		cli         = cmdline.NewBasicParser()
 		filename    = cli.Option("-cv, --cv-input").String("")
-		companyFile = cli.Option("-co, --co-file").String("")
+		companyFile = cli.Option("-co, --company-file").String("")
 		maxSkills   = cli.Option("-ms, --max-skills").Uint(1000)
 		sortSkills  = cli.Option("-ss, --sort-skills").Enum(
 			"by-experience", "by-name", "by-experience",

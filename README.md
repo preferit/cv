@@ -7,7 +7,7 @@
     
     Options
         -cv, --cv-input : ""
-        -co, --co-file : ""
+        -co, --company-file : ""
         -ms, --max-skills : 1000
         -ss, --sort-skills : "by-experience" [by-name by-experience]
         -mp, --max-projects : 1000
