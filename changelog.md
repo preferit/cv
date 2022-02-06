@@ -6,6 +6,7 @@ and this project adheres to http://semver.org/spec/v2.0.0.html.
 
 ## [unreleased]
 
+- Optional company file
 - Prefix project tags with roles
 - Add flag -ss, --sort-skills by-experience or by-name
 

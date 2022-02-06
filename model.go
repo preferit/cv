@@ -3,6 +3,9 @@ package main
 type Company struct {
 	Logo  string
 	Phone string
+
+	// private fields affect content
+	hide bool
 }
 
 type CV struct {
@@ -29,7 +32,7 @@ type Project struct {
 	Short string
 	More  string
 
-	// hidden fields are used for styling output
+	// private fields affect content
 	hide      bool
 	oneLiner  bool
 	showShort bool

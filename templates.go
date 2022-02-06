@@ -12,13 +12,18 @@ import (
 func NewCVPage(co *Company, in *CV) *Page {
 	content := Wrap(
 		Header(
-			Div(Class("company"),
-				Img(Class("logo"),
-					Src(co.Logo),
-				),
-				Br(),
-				co.Phone,
-			),
+			func() *Element {
+				if co.hide {
+					return Wrap()
+				}
+				return Div(Class("company"),
+					Img(Class("logo"),
+						Src(co.Logo),
+					),
+					Br(),
+					co.Phone,
+				)
+			}(),
 			Div(Class("picname"),
 				Img(Src(in.Person.Image)),
 				H1(in.Person.Name),

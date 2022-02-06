@@ -13,6 +13,8 @@ import (
 )
 
 func main() {
+	log.SetFlags(0)
+
 	var (
 		cli         = cmdline.NewBasicParser()
 		filename    = cli.Option("-cv, --cv-input").String("")
@@ -34,11 +36,18 @@ func main() {
 		os.Exit(0)
 	}
 
+	switch {
+	case filename == "":
+		log.Fatal("missing --cv-input")
+	}
+
 	// load curriculum vitae
 	var in CV
 	loadYaml(filename, &in)
 	var co Company
-	loadYaml(companyFile, &co)
+	if companyFile != "" {
+		loadYaml(companyFile, &co)
+	}
 
 	// prepare model, depending on what output you want
 	switch sortSkills {
