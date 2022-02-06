@@ -9,6 +9,7 @@
         -cv, --cv-input : ""
         -co, --co-file : ""
         -ms, --max-skills : 1000
+        -ss, --sort-skills : "by-experience" [by-name by-experience]
         -mp, --max-projects : 1000
         -fp, --full-projects : 3
         -t, --template : "one-page" [one-page full]

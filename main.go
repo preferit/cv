@@ -9,26 +9,28 @@ import (
 	"sort"
 
 	"github.com/gregoryv/cmdline"
-	"github.com/gregoryv/web"
 	"gopkg.in/yaml.v2"
 )
 
 func main() {
 	var (
-		cli          = cmdline.NewBasicParser()
-		filename     = cli.Option("-cv, --cv-input").String("")
-		companyFile  = cli.Option("-co, --co-file").String("")
-		maxSkills    = cli.Option("-ms, --max-skills").Uint(1000)
+		cli         = cmdline.NewBasicParser()
+		filename    = cli.Option("-cv, --cv-input").String("")
+		companyFile = cli.Option("-co, --co-file").String("")
+		maxSkills   = cli.Option("-ms, --max-skills").Uint(1000)
+		sortSkills  = cli.Option("-ss, --sort-skills").Enum(
+			"by-experience", "by-name", "by-experience",
+		)
 		maxProjects  = cli.Option("-mp, --max-projects").Uint(1000)
 		fullProjects = cli.Option("-fp, --full-projects").Uint(3)
 		template     = cli.Option("-t, --template").Enum("one-page", "one-page", "full")
 		saveas       = cli.Option("-s, --save-as").String("cv.html")
-		version      = cli.Flag("-v, --version")
+		showVersion  = cli.Flag("-v, --version")
 	)
 	cli.Parse()
 
-	if version {
-		showVersion()
+	if showVersion {
+		fmt.Println(version())
 		os.Exit(0)
 	}
 
@@ -37,10 +39,15 @@ func main() {
 	loadYaml(filename, &in)
 	var co Company
 	loadYaml(companyFile, &co)
-	// prepare model, depending on what output you want
-	sort.Sort(sort.Reverse(TechSkillByE(in.TechnicalSkills)))
 
-	var page *web.Page
+	// prepare model, depending on what output you want
+	switch sortSkills {
+	case "by-name":
+		sort.Sort(TechSkillByName(in.TechnicalSkills))
+	case "by-experience":
+		sort.Sort(sort.Reverse(TechSkillByE(in.TechnicalSkills)))
+	}
+
 	switch template {
 	case "one-page":
 		// limit skills
@@ -77,7 +84,7 @@ func main() {
 	}
 
 	// Create and save page
-	page = NewCVPage(&co, &in)
+	page := NewCVPage(&co, &in)
 	switch saveas {
 	case "":
 		page.WriteTo(os.Stdout)
@@ -98,10 +105,10 @@ func loadYaml(filename string, into interface{}) {
 	}
 }
 
-func showVersion() {
+func version() string {
 	from := bytes.Index(changelog, []byte("## ["))
 	to := bytes.Index(changelog[from:], []byte("]"))
-	fmt.Println(string(changelog[from+4 : from+to]))
+	return string(changelog[from+4 : from+to])
 }
 
 //go:embed changelog.md
