@@ -20,6 +20,14 @@ func Test_generate_readme(t *testing.T) {
 	res := append(out[:from], out[to+1:]...)
 
 	data, err := os.ReadFile("example.yaml")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	company, err := os.ReadFile("preferit.yaml")
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	page := NewPage(
 		Html(
@@ -35,9 +43,19 @@ func Test_generate_readme(t *testing.T) {
 
 				Pre("$ cv -h\n", string(res)),
 
-				H2("Template file format"),
+				H2("File formats"),
+
+				P(`Two files are used to produce the final HTML, the
+				curriculum vitae of a person and optional company
+				profile. Both files are in yaml format.`),
+
+				H3("Curriculum Vitae yaml"),
 
 				Pre(string(data)),
+
+				H3("Company yaml"),
+
+				Pre(string(company)),
 			),
 		),
 	)

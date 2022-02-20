@@ -21,7 +21,13 @@
     
     
 
-## Template file format
+## File formats
+
+Two files are used to produce the final HTML, the
+curriculum vitae of a person and optional company
+profile. Both files are in yaml format.
+
+### Curriculum Vitae yaml
 
     person:
       name: John Doe
@@ -66,5 +72,11 @@
           - Developer
         short: One sentence description
         more: more information here...
+    
+
+### Company yaml
+
+    logo:  "https://preferit.se/Smith/uploads/2018/01/preferit-logo-1.png"
+    phone: "+46 (0) 76 122 93 40"
     
 
