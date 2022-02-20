@@ -29,6 +29,10 @@ func Test_generate_readme(t *testing.T) {
 				P(`cv - command for generating HTML from YAML`),
 				Br(),
 
+				`<img src="overview.svg" style="width: 500px"/>`,
+
+				Br(),
+
 				Pre("$ cv -h\n", string(res)),
 
 				H2("Template file format"),
