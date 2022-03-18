@@ -40,8 +40,8 @@ type Project struct {
 }
 
 type Period struct {
-	FromYear int
-	ToYear   int
+	FromYear string
+	ToYear   string
 }
 
 type TechSkill struct {
