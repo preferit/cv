@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
-	"strings"
-	"time"
-
 	. "github.com/gregoryv/web"
 	"github.com/gregoryv/web/theme"
+	"strings"
+	"time"
 )
 
 func NewCVPage(co *Company, in *CV) *Page {
@@ -80,15 +79,18 @@ func NewCVPage(co *Company, in *CV) *Page {
 			func() *Element {
 
 				s := Section()
-				// find start of oneliners
-				var split int
-				for i, p := range in.Experience {
-					split = i
-					if p.oneLiner {
-						break
+				//Find all one-liners and full-experience
+				var fullExperience []Project
+				var oneLiners []Project
+
+				for _, p := range in.Experience {
+					if p.showMore {
+						fullExperience = append(fullExperience, p)
+					} else if p.showShort {
+						oneLiners = append(oneLiners, p)
 					}
 				}
-				for _, p := range in.Experience[:split] {
+				for _, p := range fullExperience {
 					if p.hide {
 						continue
 					}
@@ -124,8 +126,11 @@ func NewCVPage(co *Company, in *CV) *Page {
 					)
 				}
 
+				if len(oneLiners) == 0 {
+					return s
+				}
 				rest := Section(Class("rest"))
-				for _, p := range in.Experience[split:] {
+				for _, p := range oneLiners {
 					if p.hide {
 						continue
 					}

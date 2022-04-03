@@ -84,8 +84,8 @@ func main() {
 
 	case "full":
 		for i, _ := range in.Experience {
-			in.Experience[i].showShort = true
 			in.Experience[i].showMore = true
+			in.Experience[i].showShort = true
 		}
 
 	default:
