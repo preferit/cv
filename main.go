@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"sort"
+	"time"
 
 	"github.com/gregoryv/cmdline"
 	"gopkg.in/yaml.v2"
@@ -47,6 +48,13 @@ func main() {
 	var co Company
 	if companyFile != "" {
 		loadYaml(companyFile, &co)
+	}
+
+	// update empty toyear field to current year
+	for i, _ := range in.Experience {
+		if in.Experience[i].ToYear == 0 {
+			in.Experience[i].ToYear = time.Now().Year()
+		}
 	}
 
 	// prepare model, depending on what output you want

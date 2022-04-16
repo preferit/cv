@@ -6,6 +6,8 @@ and this project adheres to http://semver.org/spec/v2.0.0.html.
 
 ## [unreleased]
 
+- Empty toyear defaults to current year
+
 ## [0.2.0] - 2022-02-20
 
 - Rename CV.Projects to Experience
