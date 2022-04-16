@@ -6,6 +6,7 @@ and this project adheres to http://semver.org/spec/v2.0.0.html.
 
 ## [unreleased]
 
+- Replace options -t, --template with flags -e, --experience
 - Empty toyear defaults to current year
 
 ## [0.2.0] - 2022-02-20
