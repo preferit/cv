@@ -59,11 +59,23 @@ profile. Both files are in yaml format.
         location: Lund University
     
     experience:
+      - title: Ship controler
+        customer: Galaxy Inc
+        period:
+          fromyear: 2019
+        tags:
+          - C
+          - Assembler
+        roles:
+          - Developer
+        short: Implemented ... on hardware ...
+        more: A well executed plan...
+    
       - title: Space project
         customer: NASA
         period:
           fromyear: 2004
-          toyear: 2022
+          toyear: 2019
         tags:
           - Go
           - AWS
