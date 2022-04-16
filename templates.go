@@ -80,15 +80,19 @@ func NewCVPage(co *Company, in *CV) *Page {
 			func() *Element {
 
 				s := Section()
-				// find start of oneliners
-				var split int
-				for i, p := range in.Experience {
-					split = i
+
+				var (
+					oneLiners      = make([]Project, 0)
+					fullExperience = make([]Project, 0)
+				)
+				for _, p := range in.Experience {
 					if p.oneLiner {
-						break
+						oneLiners = append(oneLiners, p)
+						continue
 					}
+					fullExperience = append(fullExperience, p)
 				}
-				for _, p := range in.Experience[:split] {
+				for _, p := range fullExperience {
 					if p.hide {
 						continue
 					}
@@ -124,8 +128,12 @@ func NewCVPage(co *Company, in *CV) *Page {
 					)
 				}
 
+				if len(oneLiners) == 0 {
+					return s
+				}
+
 				rest := Section(Class("rest"))
-				for _, p := range in.Experience[split:] {
+				for _, p := range oneLiners {
 					if p.hide {
 						continue
 					}
@@ -137,6 +145,7 @@ func NewCVPage(co *Company, in *CV) *Page {
 					rest.With(h)
 				}
 				return Wrap(s, rest)
+
 			}(),
 		),
 	)
