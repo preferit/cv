@@ -10,11 +10,11 @@
     Options
         -cv, --cv-input : ""
         -co, --company-file : ""
+        -mp, --max-projects : 1000
         -ms, --max-skills : 1000
         -ss, --sort-skills : "by-experience" [by-name by-experience]
-        -mp, --max-projects : 1000
         -fp, --full-projects : 3
-        -t, --template : "one-page" [one-page full]
+        -e, --extensive
         -s, --save-as : "cv.html"
         -v, --version
         -h, --help

@@ -20,13 +20,13 @@ func main() {
 		cli         = cmdline.NewBasicParser()
 		filename    = cli.Option("-cv, --cv-input").String("")
 		companyFile = cli.Option("-co, --company-file").String("")
+		maxProjects = cli.Option("-mp, --max-projects").Uint(1000)
 		maxSkills   = cli.Option("-ms, --max-skills").Uint(1000)
 		sortSkills  = cli.Option("-ss, --sort-skills").Enum(
 			"by-experience", "by-name", "by-experience",
 		)
-		maxProjects  = cli.Option("-mp, --max-projects").Uint(1000)
 		fullProjects = cli.Option("-fp, --full-projects").Uint(3)
-		template     = cli.Option("-t, --template").Enum("one-page", "one-page", "full")
+		extensive    = cli.Flag("-e, --extensive")
 		saveas       = cli.Option("-s, --save-as").String("cv.html")
 		showVersion  = cli.Flag("-v, --version")
 	)
@@ -65,8 +65,12 @@ func main() {
 		sort.Sort(sort.Reverse(TechSkillByE(in.TechnicalSkills)))
 	}
 
-	switch template {
-	case "one-page":
+	if extensive {
+		for i, _ := range in.Experience {
+			in.Experience[i].showShort = true
+			in.Experience[i].showMore = true
+		}
+	} else {
 		// limit skills
 		if max := int(maxSkills); len(in.TechnicalSkills) > max {
 			in.TechnicalSkills = in.TechnicalSkills[:max]
@@ -89,15 +93,6 @@ func main() {
 			}
 			in.Experience[i].hide = true
 		}
-
-	case "full":
-		for i, _ := range in.Experience {
-			in.Experience[i].showShort = true
-			in.Experience[i].showMore = true
-		}
-
-	default:
-		log.Fatal("unknown template")
 	}
 
 	// Create and save page
