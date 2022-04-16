@@ -96,7 +96,7 @@ func main() {
 	}
 
 	// Create and save page
-	page := NewCVPage(&co, &in)
+	page := NewTemplate(&co, &in)
 	switch saveas {
 	case "":
 		page.WriteTo(os.Stdout)
