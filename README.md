@@ -75,7 +75,7 @@ profile. Both files are in yaml format.
         customer: NASA
         period:
           fromyear: 2004
-          toyear: 2022
+          toyear: 2019
         tags:
           - Go
           - AWS
