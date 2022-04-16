@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 	"strings"
 	"time"
 
@@ -168,28 +167,19 @@ func NewCVPage(co *Company, in *CV) *Page {
 	)
 }
 
-func experienceYears(projects []Project) string {
+func experienceYears(projects []Project) int {
 	// calculate number of hears
 	var from int
 	var to int
 	for _, p := range projects {
-		if FromYear, err := strconv.Atoi(p.Period.FromYear); err == nil {
-			if from == 0 || FromYear < from {
-				from = FromYear
-			}
+		if from == 0 || p.Period.FromYear < from {
+			from = p.Period.FromYear
 		}
-		if ToYear, err := strconv.Atoi(p.Period.ToYear); err == nil {
-			if ToYear > to {
-				to = ToYear
-			}
-		} else if p.Period.ToYear == "present" || p.Period.ToYear == "current" {
-			to = time.Now().Year()
+		if p.Period.ToYear > to {
+			to = p.Period.ToYear
 		}
 	}
-	if to-from > 0 {
-		return strconv.Itoa(to - from)
-	}
-	return ""
+	return to - from
 }
 
 func periodSpan(p Period) *Element {
