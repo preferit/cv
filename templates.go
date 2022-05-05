@@ -64,7 +64,7 @@ func NewTemplate(co *Company, in *CV) *Page {
 			func() *Element {
 				ul := Ul()
 				for _, edu := range in.Educations {
-					ul.With(Li(edu.Subject), periodSpan(edu.Period))
+					ul.With(Li(edu.Grade, " of ", edu.Subject), periodSpan(edu.Period))
 				}
 				return ul
 			}(),
