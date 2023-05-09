@@ -181,11 +181,13 @@ func experienceYears(projects []Project) int {
 	var from int
 	var to int
 	for _, p := range projects {
-		if from == 0 || p.Period.FromYear < from {
-			from = p.Period.FromYear
-		}
-		if p.Period.ToYear > to {
-			to = p.Period.ToYear
+		if p.Period.ExcludeFromTotalExp != true {
+			if from == 0 || p.Period.FromYear < from {
+				from = p.Period.FromYear
+			}
+			if p.Period.ToYear > to {
+				to = p.Period.ToYear
+			}
 		}
 	}
 	return to - from

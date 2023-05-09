@@ -40,6 +40,7 @@ type Project struct {
 }
 
 type Period struct {
+	ExcludeFromTotalExp bool
 	FromYear int
 	ToYear   int
 }

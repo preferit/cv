@@ -85,6 +85,19 @@ profile. Both files are in yaml format.
         short: One sentence description NASA
         more: more information here...
     
+      - title: Odd job during studies, experience not added to total experience
+        customer: Burger King
+        period:
+          excludefromtotalexp: true
+          fromyear: 2000
+          toyear: 2003
+        tags:
+          - Deep frying
+          - Lettuce cutting
+        roles:
+          - Chef
+        short: One sentence description Bruger King
+        more: more information here...
 
 ### Company yaml
 
